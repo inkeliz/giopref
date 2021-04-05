@@ -1,5 +1,7 @@
 # GioPref
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/Inkeliz/giopref.svg)](https://pkg.go.dev/github.com/Inkeliz/giopref) [![Go Report Card](https://goreportcard.com/badge/github.com/Inkeliz/giopref)](https://goreportcard.com/report/github.com/Inkeliz/giopref)
+
 _GioPref_ aims to provide a simple and easy way to get user preferences for you Gio project.
 
 ### Supported OS:
