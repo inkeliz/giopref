@@ -19,7 +19,7 @@ func getLanguage() string {
 
 	r, _, _ := _DefaultUserLang.Call(uintptr(unsafe.Pointer(&lang[0])), uintptr(_DefaultMaxSize))
 	if r == 0 {
-		r, _, _ = _DefaultSystemLang.Call(uintptr(unsafe.Pointer(&lang[0])), uintptr(_DefaultMaxSize))
+		_DefaultSystemLang.Call(uintptr(unsafe.Pointer(&lang[0])), uintptr(_DefaultMaxSize))
 	}
 
 	return windows.UTF16ToString(lang)

@@ -18,7 +18,7 @@ func getLanguage() (lang string) {
 		if err != nil {
 			return err
 		}
-		
+
 		obj, err := jni.NewObject(env, class, jni.GetMethodID(env, class, "<init>", `()V`))
 		if err != nil {
 			return err

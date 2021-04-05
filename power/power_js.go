@@ -40,16 +40,16 @@ func isCharging() bool {
 	return value.Bool()
 }
 
-func do(name string) (js.Value, error){
+func do(name string) (js.Value, error) {
 	if !_GetBattery.Truthy() {
 		return js.Value{}, errors.New("API not available")
 	}
 
 	var (
 		success, failure js.Func
-		
+
 		value = make(chan js.Value, 1)
-		err = make(chan error, 1)
+		err   = make(chan error, 1)
 	)
 
 	success = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
@@ -70,13 +70,12 @@ func do(name string) (js.Value, error){
 		return nil
 	})
 
-
 	go func() {
 		js.Global().Get("navigator").Call("getBattery").Call("then", success, failure)
 	}()
 
 	select {
-	case value := <- value:
+	case value := <-value:
 		return value, nil
 	case err := <-err:
 		return js.Value{}, err
